@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  grafica:
+    container_name: grafica
+    image: ruby:2.6.5-buster
+    working_dir: /app
+    environment:
+      DB_HOST: "neo4j:7474"
+    volumes:
+       - .:/app
+       - v-neo4j-gem:/usr/local/bundle
+    ports:
+      - 3000:3000
+    tty: true
+    command: /bin/bash
+    depends_on:
+      - neo4j
+  neo4j:
+    container_name: neo4j
+    image: neo4j:3.5.11
+    volumes:
+      - v-neo4j:/data
+      - ./db/neo4j/conf:/var/lib/neo4j/conf
+    ports:
+      - 7474:7474
+      - 7687:7687
+
+volumes:
+  v-neo4j:
+  v-neo4j-gem:
