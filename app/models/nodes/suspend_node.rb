@@ -1,0 +1,2 @@
+class SuspendNode < Node
+end

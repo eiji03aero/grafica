@@ -16,6 +16,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  # raising error, plus it's not actively maintained atm
+  # gem 'neo4j-rspec'
 end
 
 group :development do

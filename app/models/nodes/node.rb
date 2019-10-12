@@ -1,0 +1,2 @@
+class Node < DialogObject
+end

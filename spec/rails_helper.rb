@@ -45,3 +45,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# clean up database
+Neo4j::ActiveBase.current_session.query('MATCH (n) DETACH DELETE n')

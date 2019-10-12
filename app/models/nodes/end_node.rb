@@ -1,0 +1,2 @@
+class EndNode < Node
+end

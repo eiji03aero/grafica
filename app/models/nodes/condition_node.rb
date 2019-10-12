@@ -1,0 +1,2 @@
+class ConditionNode < Node
+end

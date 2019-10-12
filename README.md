@@ -1,24 +1,25 @@
-# README
+# Models
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- DialogObject
+  - has_one parent_node: DialogObject
+  - has_one next_node: DialogObject
 
-Things you may want to cover:
+- Node < DialogObject
 
-* Ruby version
+- Component < DialogObject
+  - has_many children: Node
 
-* System dependencies
+- StartNode < Node
 
-* Configuration
+- EndNode < Node
 
-* Database creation
+- TextNode < Node
+  - text: string
 
-* Database initialization
+- SuspendNode < Node
 
-* How to run the test suite
+- ConditionNode < Node
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Scenario
+  - name: string
+  - has_one root_component: Component

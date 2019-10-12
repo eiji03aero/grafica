@@ -1,0 +1,2 @@
+class StartNode < Node
+end
