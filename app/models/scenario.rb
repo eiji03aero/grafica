@@ -6,12 +6,11 @@ class Scenario
 
   has_one :out, :root_component, type: :component, model_class: :Component
 
-  after_create do
-    initialize_properties
+  def own_nodes
+    DialogObject.where(scenario: self)
   end
 
-  def initialize_properties
-    self.root_component = Component.new
-    root_component.children << StartNode.new
+  def number_of_nodes
+    own_nodes.count
   end
 end

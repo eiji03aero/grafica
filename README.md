@@ -1,25 +1,80 @@
+# Grafica = scenario + neo4j
+
+# Apis
+
+- create scenario
+- create nodes
+- execute scenario
+  - create client
+  - create sequence
+  - returns json
+
 # Models
 
 - DialogObject
+  - sequential_id: integer
   - has_one parent_node: DialogObject
   - has_one next_node: DialogObject
+  - belongs_to scenario: Scenario
+  - .should_stop
+  - #execute
+    - #generate_reply_data
+  - #generate_reply_data
 
-- Node < DialogObject
+  - Node < DialogObject
 
-- Component < DialogObject
-  - has_many children: Node
+    - StartNode < Node
 
-- StartNode < Node
+    - EndNode < Node
 
-- EndNode < Node
+    - TextNode < Node
+      - text: string
 
-- TextNode < Node
-  - text: string
+    - SuspendNode < Node
 
-- SuspendNode < Node
+    - ConditionNode < Node
+      - has_many conditions: Condition
 
-- ConditionNode < Node
+  - Component < DialogObject
+    - has_many children: Node
+    - #is_root
+
+- Condition
+  - has_one next_node DialogObject
+  - #calc_confidence
+
+  - InputMatchCondition < Condition
 
 - Scenario
   - name: string
   - has_one root_component: Component
+
+- Client
+  - belongs_to scenario Scenario
+  - has_many conversations: Conversation
+
+- Conversation
+  - has_many clients: Client
+  - has_many sequences: Sequence
+
+- ScenarioError::Base
+  - has_many related_nodes DialogObject
+
+  - EndNodeNotFound < Base
+  - NextNodeNotDefined < Base
+
+# Services
+- DialogObjectFactoryService
+  - .new
+    - parent_id
+    - type
+    - data
+  - #execute
+
+- ReplyService
+  - .new
+  - #execute
+
+- ScenarioExecutorService
+  - .new
+  - #execute
