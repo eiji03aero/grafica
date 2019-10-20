@@ -6,7 +6,7 @@ class DialogObject
 
   has_one :both, :parent_node, type: :dialog_object, model_class: :DialogObject
   has_one :out, :next_node, type: :dialog_object, model_class: :DialogObject
-  has_one :out, :scenario, type: :scenario, model_class: :Scenario
+  has_one :out, :scenario, type: :scenario_belonging, model_class: :Scenario
 
   before_create do
     # sequential_id starts from 0

@@ -5,10 +5,7 @@ class Scenario
   property :name, default: 'scenario'
 
   has_one :out, :root_component, type: :component, model_class: :Component
-
-  def nodes
-    DialogObject.where(scenario: self)
-  end
+  has_many :in, :nodes, type: :scenario_belonging, model_class: :DialogObject
 
   def number_of_nodes
     nodes.count
