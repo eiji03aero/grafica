@@ -6,11 +6,11 @@ class Scenario
 
   has_one :out, :root_component, type: :component, model_class: :Component
 
-  def own_nodes
+  def nodes
     DialogObject.where(scenario: self)
   end
 
   def number_of_nodes
-    own_nodes.count
+    nodes.count
   end
 end

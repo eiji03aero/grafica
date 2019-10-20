@@ -60,6 +60,7 @@
 - ScenarioError::Base
   - has_many related_nodes DialogObject
 
+  - UnknownNodeType < Base
   - EndNodeNotFound < Base
   - NextNodeNotDefined < Base
 
