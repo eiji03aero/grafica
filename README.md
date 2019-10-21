@@ -11,12 +11,13 @@
 
 # Models
 
+```
 - DialogObject
   - sequential_id: integer
   - has_one parent_node: DialogObject
   - has_one next_node: DialogObject
   - belongs_to scenario: Scenario
-  - .should_stop
+  - .stop_node?
   - #execute
     - #generate_reply_data
   - #generate_reply_data
@@ -51,20 +52,29 @@
 
 - Client
   - belongs_to scenario Scenario
-  - has_many conversations: Conversation
+  - has_many :in, conversations: Conversation
+  - has_many :in, sequences: Sequence
+
+- Sequence
+  - text: string
+  - has_one :out, client: Client
+  - has_one :out, conversation: Conversation
 
 - Conversation
-  - has_many clients: Client
-  - has_many sequences: Sequence
+  - has_many :out, clients: Client
+  - has_many :in, sequences: Sequence
 
 - ScenarioError::Base
-  - has_many related_nodes DialogObject
+  - has_many :out, related_nodes: DialogObject
 
   - UnknownNodeType < Base
   - EndNodeNotFound < Base
   - NextNodeNotDefined < Base
+```
 
 # Services
+
+```
 - DialogObjectFactoryService
   - .new
     - parent_id
@@ -74,8 +84,19 @@
 
 - ReplyService
   - .new
+    - message_data
+    - client_id
+    - scenario_id
   - #execute
 
-- ScenarioExecutorService
+- FindConversationService
+  - .new
+    - scenario_id
+    - client_id
+  - #execute
+    return: Conversation
+
+- ExecuteScenarioService
   - .new
   - #execute
+```

@@ -9,7 +9,6 @@
 # flow
 # - initialize
 #   - receive params
-#     - message_data
 #     - sequence_id
 #   - fetch corresponding sequence, scenario, client, conversation
 # - execute

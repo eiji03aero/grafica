@@ -1,12 +1,8 @@
 class DialogObjectFactoryService
+  extend ServiceModule::Base
+
   attr_accessor :node
   attr_reader :scenario, :parent_node, :type, :data
-
-  class << self
-    def create(params)
-      new(params).execute
-    end
-  end
 
   def initialize(params)
     @scenario = Scenario.find(params[:scenario_id])

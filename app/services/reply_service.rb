@@ -13,7 +13,10 @@
 #   - find or create client
 #   - create sequence record
 # - execute
-#   - initialize and execute ExecuteScenarioService
+#   - execute FindConversationService
+#   - create sequence
+#     - client, conversation
+#   - execute ExecuteScenarioService
 #   - convert replay_messages into json
 #   - return: replay_messages
 

@@ -31,6 +31,17 @@ if [ $COMMAND = 'up' ] && [ $# -le 1 ]; then
   stop-docker-compose
 elif [ $COMMAND = 'bash' ]; then
   execute-docker-compose exec $container_name /bin/bash
+
+elif [ $COMMAND = 'reset-db' ]; then
+  execute-docker-compose rm -f neo4j
+  execute-docker-compose rm -f neo4j-test
+  execute-docker-compose up -d
+  echo "wait until server on neo4j-test available ..."
+  sleep 20s
+  execute-docker-compose exec grafica bundle exec rake neo4j:migrate RAILS_ENV=development
+  execute-docker-compose exec grafica bundle exec rake neo4j:migrate RAILS_ENV=test
+  execute-docker-compose stop
+
 else
   execute-docker-compose $@
 fi

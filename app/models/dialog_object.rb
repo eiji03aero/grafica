@@ -4,7 +4,7 @@ class DialogObject
 
   property :sequential_id, type: Integer, default: 0
 
-  has_one :both, :parent_node, type: :dialog_object, model_class: :DialogObject
+  has_one :out, :parent_node, type: :parent_node, model_class: :DialogObject
   has_one :out, :next_node, type: :dialog_object, model_class: :DialogObject
   has_one :out, :scenario, type: :scenario_belonging, model_class: :Scenario
 

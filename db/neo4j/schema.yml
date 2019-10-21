@@ -14,9 +14,17 @@
 :constraints:
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
+- CONSTRAINT ON ( client:Client ) ASSERT client.uuid IS UNIQUE
+- CONSTRAINT ON ( conversation:Conversation ) ASSERT conversation.uuid IS UNIQUE
 - CONSTRAINT ON ( dialogobject:DialogObject ) ASSERT dialogobject.uuid IS UNIQUE
 - CONSTRAINT ON ( scenario:Scenario ) ASSERT scenario.uuid IS UNIQUE
-:indexes: []
+- CONSTRAINT ON ( sequence:Sequence ) ASSERT sequence.uuid IS UNIQUE
+:indexes:
+- INDEX ON :Client(type)
+- INDEX ON :Conversation(type)
 :versions:
 - '20191011064121'
 - '20191012061440'
+- '20191021032538'
+- '20191021045721'
+- '20191021045914'

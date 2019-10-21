@@ -6,8 +6,13 @@ class Scenario
 
   has_one :out, :root_component, type: :component, model_class: :Component
   has_many :in, :nodes, type: :scenario_belonging, model_class: :DialogObject
+  has_many :in, :clients, type: :scenario, model_class: :Client
 
   def number_of_nodes
     nodes.count
+  end
+
+  def client_bot
+    clients.bot.first
   end
 end

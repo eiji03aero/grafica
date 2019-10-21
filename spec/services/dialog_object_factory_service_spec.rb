@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DialogObjectFactoryService, type: :service do
   describe 'execute' do
-    let(:scenario) { CreateScenarioService.new(name:'hoge').execute }
+    include_context "has brand new scenario"
 
     it 'should create' do
       tests = [
@@ -39,7 +39,7 @@ RSpec.describe DialogObjectFactoryService, type: :service do
       ]
 
       tests.each do |t|
-        node = DialogObjectFactoryService.create(
+        node = DialogObjectFactoryService.execute(
           type: t[:type],
           data: t[:data],
           parent_id: scenario.root_component,

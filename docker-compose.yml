@@ -22,7 +22,6 @@ services:
     container_name: neo4j
     image: neo4j:3.5.11
     volumes:
-      - v-neo4j:/data
       - ./db/neo4j/conf:/var/lib/neo4j/conf
     ports:
       - '7474:7474'
@@ -31,12 +30,9 @@ services:
     container_name: neo4j-test
     image: neo4j:3.5.11
     volumes:
-      - v-neo4j-test:/data
       - ./db/neo4j/conf-test:/var/lib/neo4j/conf
     ports:
       - '7475:7474'
 
 volumes:
-  v-neo4j:
-  v-neo4j-test:
   v-grafica-gem:
