@@ -5,9 +5,6 @@
 - create scenario
 - create nodes
 - execute scenario
-  - create client
-  - create sequence
-  - returns json
 
 # Models
 
@@ -70,6 +67,7 @@
   - has_one :out, conversation: Conversation
 
 - Conversation
+  - has_one :out, suspended_node: DialogObject
   - has_many :out, clients: Client
   - has_many :in, sequences: Sequence
 

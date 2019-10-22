@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreateScenarioService, type: :service do
-  describe 'execute' do
+  describe '.execute' do
     it 'should create' do
       name = 'test scenario'
       scenario = CreateScenarioService.execute(name: name)

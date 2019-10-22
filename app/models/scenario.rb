@@ -15,4 +15,8 @@ class Scenario
   def client_bot
     clients.bot.first
   end
+
+  def root_start_node
+    root_component.children.start_nodes.first
+  end
 end
