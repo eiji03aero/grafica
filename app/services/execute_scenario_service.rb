@@ -14,8 +14,7 @@
 # - execute
 #   - find node to start
 #     - set current_node to node to start
-#     - set previous_node if possible
-#   - while !Node.shouldStop(@current_node)
+#   - while !Scenario.shouldStop(@current_node)
 #     - message, next_node_id = @current_node.execute
 #   - update conversation
 #     - suspended_node_id
@@ -24,4 +23,18 @@
 #   - return: reply_messages
 
 class ExecuteScenarioService
+  extend ServiceModule::Base
+
+  attr_reader :sequence, :client, :scenario, :conversation
+
+  def initialize(params)
+    @sequence = Sequence.find(params[:sequence_id])
+    @client = @sequence.client
+    @conversation = @sequence.conversation
+    @scenario = @client.scenario
+  end
+
+  def execute
+    @current_node = FindNodeToStartService.execute(scenario_id: scenario.id, conversation_id: conversation.id)
+  end
 end

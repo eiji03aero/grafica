@@ -32,7 +32,7 @@ class CreateNodeService
     when "condition_node"
       ConditionNode.create(base_params)
     else
-      raise StandardError
+      raise ScenarioError::UnknownNodeType
     end
   end
 

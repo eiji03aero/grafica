@@ -1,4 +1,2 @@
-module ScenarioError
-  class NextNodeNotFound < Base
-  end
+class ScenarioError::NextNodeNotFound < ScenarioError::Base
 end

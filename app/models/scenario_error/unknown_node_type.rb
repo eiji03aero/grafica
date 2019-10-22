@@ -1,4 +1,2 @@
-module ScenarioError
-  class UnknownNodeType < Base
-  end
+class ScenarioError::UnknownNodeType < ScenarioError::Base
 end

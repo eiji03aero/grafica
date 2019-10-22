@@ -71,10 +71,10 @@
   - has_many :out, clients: Client
   - has_many :in, sequences: Sequence
 
-- ScenarioError::Base
+- ScenarioError::Base < StandardError
   - has_many :out, related_nodes: DialogObject
 
-  - UnknownNodeType < ScenarioError
+  - UnknownNodeType < Base
   - EndNodeNotFound < Base
   - NextNodeNotDefined < Base
 ```

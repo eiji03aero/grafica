@@ -16,10 +16,7 @@
   IS UNIQUE
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
-- CONSTRAINT ON ( `scenarioerror::base`:`ScenarioError::Base` ) ASSERT `scenarioerror::base`.uuid
-  IS UNIQUE
 - CONSTRAINT ON ( client:Client ) ASSERT client.uuid IS UNIQUE
-- CONSTRAINT ON ( conditiongroup:ConditionGroup ) ASSERT conditiongroup.uuid IS UNIQUE
 - CONSTRAINT ON ( conversation:Conversation ) ASSERT conversation.uuid IS UNIQUE
 - CONSTRAINT ON ( dialogobject:DialogObject ) ASSERT dialogobject.uuid IS UNIQUE
 - CONSTRAINT ON ( scenario:Scenario ) ASSERT scenario.uuid IS UNIQUE
@@ -33,6 +30,4 @@
 - '20191021032538'
 - '20191021045721'
 - '20191021045914'
-- '20191021132905'
 - '20191021133857'
-- '20191022050205'

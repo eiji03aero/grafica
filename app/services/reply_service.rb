@@ -17,8 +17,9 @@
 #   - create sequence
 #     - client, conversation
 #   - execute ExecuteScenarioService
-#   - convert replay_messages into json
-#   - return: replay_messages
+#     - sequence_id
+#   - create sequences with reply_data
+#   - return: sequences
 
 class ReplyService
 end

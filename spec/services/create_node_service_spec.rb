@@ -48,5 +48,11 @@ RSpec.describe CreateNodeService, type: :service do
         expect(node).to be_an_instance_of t[:class]
       end
     end
+
+    it 'should raise error when unknown type passed' do
+      expect {
+        CreateNodeService.execute(type: 'hoge', scenario_id: scenario.id)
+      }.to raise_error(ScenarioError::UnknownNodeType)
+    end
   end
 end
