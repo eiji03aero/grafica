@@ -12,7 +12,7 @@ RSpec.describe ExecuteScenarioService, type: :service do
     type: 'text_node', scenario_id: scenario.id, parent_id: scenario.root_component.id, data: { text: 'domo2' }
   )}
   let!(:suspend) { CreateNodeService.execute(
-    type: 'text_node', scenario_id: scenario.id, parent_id: scenario.root_component.id, data: { text: 'domo2' }
+    type: 'suspend_node', scenario_id: scenario.id, parent_id: scenario.root_component.id
   )}
 
   describe '.execute' do
@@ -25,8 +25,8 @@ RSpec.describe ExecuteScenarioService, type: :service do
       reply_messages = ExecuteScenarioService.execute(sequence_id: sequence.id)
 
       expect(reply_messages.length).to eq 2
-      expect(reply_messages[0].text).to eq "domo1"
-      expect(reply_messages[1].text).to eq "domo2"
+      expect(reply_messages[0][:text]).to eq "domo1"
+      expect(reply_messages[1][:text]).to eq "domo2"
     end
   end
 end

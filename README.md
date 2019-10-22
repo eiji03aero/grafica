@@ -77,6 +77,7 @@
   - UnknownNodeType < Base
   - EndNodeNotFound < Base
   - NextNodeNotDefined < Base
+  - ScenarioInfiniteLoop < Base
 ```
 
 # Services
@@ -109,6 +110,13 @@
     - client_id
   - #execute
     return: Conversation
+
+- FindNodeToStartService
+  - .new
+    - scenario_id
+    - conversation_id
+  - #execute
+    return: DialogObject
 
 - ExecuteScenarioService
   - .new
