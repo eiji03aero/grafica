@@ -1,4 +1,4 @@
-class DialogObjectFactoryService
+class CreateNodeService
   extend ServiceModule::Base
 
   attr_accessor :node
@@ -41,5 +41,11 @@ class DialogObjectFactoryService
       parent_node: parent_node,
       scenario: scenario
     )
+  end
+
+  def create_condition_node(params)
+    condition_node = ConditionNode.create(params)
+    condition_group = ConditionGroup.create(node: condition_node)
+    condiiton_node
   end
 end

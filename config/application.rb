@@ -51,7 +51,6 @@ module Grafica
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.autoload_paths += Dir[Rails.root.join("app", "models", "{*/}")]
-    config.autoload_paths += Dir[Rails.root.join("app", "services", "{*/}")]
+    config.autoload_paths += Dir[Rails.root.join("app", "models", "nodes")]
   end
 end

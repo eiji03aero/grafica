@@ -19,8 +19,12 @@
   - belongs_to scenario: Scenario
   - .stop_node?
   - #execute
+    - #process_node
     - #generate_reply_data
+    - #get_next_node
+  - #process_node
   - #generate_reply_data
+  - #get_next_node
 
   - Node < DialogObject
 
@@ -34,17 +38,22 @@
     - SuspendNode < Node
 
     - ConditionNode < Node
-      - has_many conditions: Condition
+      - has_many :out, conditions: Condition
+      - #calc_conditions
+      - #add_condition
+      - #update_condition
+      - #destroy_condition
 
   - Component < DialogObject
-    - has_many children: Node
+    - has_many children: DialogObject
     - #is_root
 
-- Condition
-  - has_one next_node DialogObject
+- Condition::Base
+  - has_one :in, node: ConditionNode
+  - has_one :out, next_node: DialogObject
   - #calc_confidence
 
-  - InputMatchCondition < Condition
+  - TextPerfectMatch < Base
 
 - Scenario
   - name: string
@@ -67,7 +76,7 @@
 - ScenarioError::Base
   - has_many :out, related_nodes: DialogObject
 
-  - UnknownNodeType < Base
+  - UnknownNodeType < ScenarioError
   - EndNodeNotFound < Base
   - NextNodeNotDefined < Base
 ```
@@ -75,7 +84,14 @@
 # Services
 
 ```
-- DialogObjectFactoryService
+- CreateNodeService
+  - .new
+    - parent_id
+    - type
+    - data
+  - #execute
+
+- UpdateNodeService
   - .new
     - parent_id
     - type

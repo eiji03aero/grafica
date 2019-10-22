@@ -15,10 +15,10 @@ class CreateScenarioService
   end
 
   def init_root_component
-    root_component = DialogObjectFactoryService.execute(
+    root_component = CreateNodeService.execute(
       scenario_id: scenario.id, type: 'component'
     )
-    start_node = DialogObjectFactoryService.execute(
+    start_node = CreateNodeService.execute(
       scenario_id: scenario.id, type: 'start_node', parent_id: root_component.id
     )
     @scenario.root_component = root_component

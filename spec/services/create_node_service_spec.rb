@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DialogObjectFactoryService, type: :service do
+RSpec.describe CreateNodeService, type: :service do
   describe 'execute' do
     include_context "has brand new scenario"
 
@@ -39,7 +39,7 @@ RSpec.describe DialogObjectFactoryService, type: :service do
       ]
 
       tests.each do |t|
-        node = DialogObjectFactoryService.execute(
+        node = CreateNodeService.execute(
           type: t[:type],
           data: t[:data],
           parent_id: scenario.root_component,

@@ -12,4 +12,23 @@ class DialogObject
     # sequential_id starts from 0
     self.sequential_id = scenario.number_of_nodes
   end
+
+  def execute(sequence)
+    process_node(sequence)
+    next_node = get_next_node(sequence)
+    reply_data = generate_reply_data(sequence)
+    return next_node, reply_data
+  end
+
+  def process_node(sequence)
+    nil
+  end
+
+  def get_next_node(sequence)
+    next_node
+  end
+
+  def generate_reply_data(sequence)
+    []
+  end
 end
