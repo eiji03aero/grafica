@@ -32,9 +32,9 @@ if [ $COMMAND = 'up' ] && [ $# -le 1 ]; then
 elif [ $COMMAND = 'bash' ]; then
   execute-docker-compose exec $container_name /bin/bash
 
-elif [ $COMMAND = 'reset-db' ]; then
-  execute-docker-compose rm -f neo4j
-  execute-docker-compose rm -f neo4j-test
+elif [ $COMMAND = 'grafica-reset-db' ]; then
+  execute-docker-compose rm -f grafica-neo4j
+  execute-docker-compose rm -f grafica-neo4j-test
   execute-docker-compose up -d
   echo "wait until server on neo4j-test available ..."
   sleep 20s

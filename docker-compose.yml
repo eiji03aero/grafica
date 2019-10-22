@@ -9,28 +9,28 @@ services:
       DB_HOST: "neo4j:7474"
       TEST_DB_HOST: "neo4j-test:7475"
     volumes:
-       - .:/app
+       - ./services/grafica:/app
        - v-grafica-gem:/usr/local/bundle
     ports:
       - 3000:3000
     tty: true
     command: /bin/bash
     depends_on:
-      - neo4j
-      - neo4j-test
-  neo4j:
+      - grafica-neo4j
+      - grafica-neo4j-test
+  grafica-neo4j:
     container_name: neo4j
     image: neo4j:3.5.11
     volumes:
-      - ./db/neo4j/conf:/var/lib/neo4j/conf
+      - ./services/grafica/db/neo4j/conf:/var/lib/neo4j/conf
     ports:
       - '7474:7474'
       - '7687:7687'
-  neo4j-test:
+  grafica-neo4j-test:
     container_name: neo4j-test
     image: neo4j:3.5.11
     volumes:
-      - ./db/neo4j/conf-test:/var/lib/neo4j/conf
+      - ./services/grafica/db/neo4j/conf-test:/var/lib/neo4j/conf
     ports:
       - '7475:7474'
 
