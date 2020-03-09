@@ -4,10 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'rails', '~> 6.0.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 3.11'
 # gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
+gem 'mongoid', '~> 7.0.5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -27,6 +28,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'neo4j', '~> 9.6.0'
-gem 'neo4j-rake_tasks'
